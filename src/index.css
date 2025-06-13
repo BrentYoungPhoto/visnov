@@ -1,0 +1,300 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ✨ Character Animation Classes */
+@layer utilities {
+  /* Animation duration classes */
+  .duration-200 { transition-duration: 200ms; }
+  .duration-300 { transition-duration: 300ms; }
+  .duration-500 { transition-duration: 500ms; }
+  .duration-700 { transition-duration: 700ms; }
+  .duration-800 { transition-duration: 800ms; }
+  .duration-1000 { transition-duration: 1000ms; }
+  .duration-1200 { transition-duration: 1200ms; }
+  .duration-1500 { transition-duration: 1500ms; }
+  .duration-2000 { transition-duration: 2000ms; }
+  
+  /* Character entrance animations */
+  @keyframes slideFromLeft {
+    from {
+      transform: translate(-150%, -50%);
+      opacity: 0;
+    }
+    to {
+      transform: translate(-50%, -50%);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideFromRight {
+    from {
+      transform: translate(50%, -50%);
+      opacity: 0;
+    }
+    to {
+      transform: translate(-50%, -50%);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideFromTop {
+    from {
+      transform: translate(-50%, -150%);
+      opacity: 0;
+    }
+    to {
+      transform: translate(-50%, -50%);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideFromBottom {
+    from {
+      transform: translate(-50%, 50%);
+      opacity: 0;
+    }
+    to {
+      transform: translate(-50%, -50%);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeInCharacter {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+  
+  /* Character exit animations */
+  @keyframes slideToLeft {
+    from {
+      transform: translate(-50%, -50%);
+      opacity: 1;
+    }
+    to {
+      transform: translate(-150%, -50%);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes slideToRight {
+    from {
+      transform: translate(-50%, -50%);
+      opacity: 1;
+    }
+    to {
+      transform: translate(50%, -50%);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes fadeOutCharacter {
+    from {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.8);
+    }
+  }
+  
+  /* Animation utility classes */
+  .animate-slide-from-left {
+    animation: slideFromLeft 0.8s ease-out forwards;
+  }
+  
+  .animate-slide-from-right {
+    animation: slideFromRight 0.8s ease-out forwards;
+  }
+  
+  .animate-slide-from-top {
+    animation: slideFromTop 0.8s ease-out forwards;
+  }
+  
+  .animate-slide-from-bottom {
+    animation: slideFromBottom 0.8s ease-out forwards;
+  }
+  
+  .animate-fade-in-character {
+    animation: fadeInCharacter 0.8s ease-out forwards;
+  }
+  
+  .animate-slide-to-left {
+    animation: slideToLeft 0.6s ease-in forwards;
+  }
+  
+  .animate-slide-to-right {
+    animation: slideToRight 0.6s ease-in forwards;
+  }
+  
+  .animate-fade-out-character {
+    animation: fadeOutCharacter 0.6s ease-in forwards;
+  }
+  
+  /* Speaking character highlight */
+  .character-speaking {
+    filter: brightness(1.1) contrast(1.1);
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+    z-index: 10;
+  }
+  
+  .character-non-speaking {
+    filter: brightness(0.95);
+    transition: all 0.3s ease;
+  }
+  
+  /* Character debug info */
+  .character-debug-info {
+    position: absolute;
+    top: -2rem;
+    left: 0;
+    font-size: 0.75rem;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 20;
+  }
+
+  /* ✨ Logic Builder Styles */
+  .slider {
+    background: linear-gradient(to right, #8b5cf6 0%, #8b5cf6 var(--value), #4b5563 var(--value), #4b5563 100%);
+    transition: all 0.2s ease;
+  }
+
+  .slider:hover {
+    background: linear-gradient(to right, #a78bfa 0%, #a78bfa var(--value), #4b5563 var(--value), #4b5563 100%);
+  }
+
+  .slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #8b5cf6, #6366f1);
+    cursor: pointer;
+    border: 3px solid #ffffff;
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
+    transition: all 0.2s ease;
+  }
+
+  .slider:hover::-webkit-slider-thumb {
+    background: linear-gradient(135deg, #a78bfa, #818cf8);
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(139, 92, 246, 0.6);
+  }
+
+  .slider::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #8b5cf6, #6366f1);
+    cursor: pointer;
+    border: 3px solid #ffffff;
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
+    transition: all 0.2s ease;
+  }
+
+  .slider:hover::-moz-range-thumb {
+    background: linear-gradient(135deg, #a78bfa, #818cf8);
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(139, 92, 246, 0.6);
+  }
+
+  /* Variable cards hover effects */
+  .variable-card {
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .variable-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.1), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .variable-card:hover {
+    border-color: #8b5cf6;
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .variable-card:hover::before {
+    left: 100%;
+  }
+
+  /* Logic builder animations */
+  @keyframes slideInFromLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .logic-tab-enter {
+    animation: slideInFromLeft 0.3s ease-out;
+  }
+
+  .logic-content-enter {
+    animation: fadeInUp 0.4s ease-out;
+  }
+
+  /* Enhanced focus states */
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    ring: 2px;
+    ring-color: #8b5cf6;
+    border-color: #8b5cf6;
+  }
+
+  /* Custom scrollbar for logic builder */
+  .logic-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .logic-scrollbar::-webkit-scrollbar-track {
+    background: #374151;
+    border-radius: 4px;
+  }
+
+  .logic-scrollbar::-webkit-scrollbar-thumb {
+    background: #6b7280;
+    border-radius: 4px;
+  }
+
+  .logic-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #8b5cf6;
+  }
+}
